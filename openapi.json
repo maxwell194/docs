@@ -10,7 +10,7 @@
   "paths": {
     "/users": {
       "get": {
-        "summary": "获取用户列表",
+        "summary": "获取用户列表1",
         "responses": {
           "200": {
             "description": "成功",
