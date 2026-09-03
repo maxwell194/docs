@@ -2,3 +2,73 @@
 title: "Help guide"
 icon: "hands-helping"
 ---
+
+## Available endpoints & Data retention
+
+Retention windows and data availability thresholds vary by endpoint:
+
+| **Category** | **Endpoint / Scope** | **Retention Window** |
+| :-- | :-- | :-- |
+| **Creator information** | General profile data & connected creators | Full historical data |
+| **Creator status log** | Full history of creator status modifications | From June 1, 2026 onwards |
+| **Revenue breakdown** | Detailed earnings, transaction details, & refund details | Maximum of last 1 year of historical data |
+| **Transaction performance** | Sales attribution details with employee breakdowns (supports all creators, including deleted/unlinked) | Maximum of last 1 year of historical data |
+| **Reassigned sales log** | Manual assignment records for sales data | Maximum of last 1 year of historical data |
+| **Marketing analytics** | Tracking links | Full historical data |
+| **Marketing analytics** | Free trial links | Full historical data |
+| **Marketing analytics** | Profile promotions | Last 10,000 campaigns from up to 365 days ago |
+| **Marketing analytics** | Link fans | Full historical data |
+| **Employee data** | Employee lists & employee-to-creator assignments | Full historical data |
+| **Employee reports** | Sales performance & chat activity breakdowns by employee | Maximum of last 1 year of historical data |
+| **Creator reports** | Daily performance metrics (platform ranking, fan status, growth, renewals, chat activity, visitors) | Maximum of last 1 year of historical data |
+| **Message analytics** | Records of automated & priority mass messages | Full historical data |
+| **Invoice** | Monthly Infloww billing and invoice summaries | Maximum of last 1 year of historical data |
+
+## **Security Best Practices**
+
+- Rotate API keys every 30 days for enhanced security.
+- Avoid sharing your API key with third parties unless necessary, and sign formal agreements (DSA or DPA) to ensure data compliance.
+- Use a proxy or wrapper when integrating third-party services, exposing only the needed data—not your raw API key.
+- Restrict API usage with IP whitelisting.
+- Monitor API key usage and immediately reset keys if suspicious activity is detected or partnerships end.
+
+## Error Message Guide
+
+| **Status Code** | **Common Cause** | **Resolution** |
+| :-- | :-- | :-- |
+| `401 Unauthorized` | Invalid or missing API key. | Verify that your raw API key is provided in the `Authorization` header without any "Bearer" prefix. |
+| `403 Forbidden` | Missing `x-oid` header or insufficient key permissions. | Ensure the `x-oid` header contains your correct Agency OID. Verify that the requested creator or employee is explicitly included in your API key's permission scope. |
+| `429 Too Many Requests` | Agency rate limit exceeded. | You have exceeded the 1,000 QPM agency threshold across your API keys. Pause or space out requests before retrying. |
+| `500 / 503 Internal Error` | Temporary API or database error. | Retry the request after a short interval. If the issue persists, contact support and provide the `x-request-id` from the response headers. |
+
+## Common use cases
+
+### **Financial operations & reporting**
+
+- **Automated reporting:** Sync creator revenue and marketing data directly to client-facing or internal dashboards.
+- **Automated invoicing & workflows:** Automate bi-weekly or monthly invoice calculations using raw earnings data, including syncing OnlyFans net income data directly into your own systems.
+- **Payroll & commission calculator:** A back-office tool for agency operations that automatically calculates employee earnings based on custom commission percentages and their individual sales.
+- **Target Tracking:** View real-time data on agency standing and compare current revenue breakdowns against set goals by individual creator.
+
+### **Team performance & analytics**
+
+- **Employee sales performance:** Track individual chatter sales data breakdowns, verify sales, and compare results against set sales targets.
+- **Sales leaderboard & gamification:** A highly visual dashboard that ranks employees by sales performance to foster friendly internal competition and drive higher revenue.
+- **Performance & efficiency dashboard:** A dedicated space focused entirely on evaluating the individual or team performance of the employees running the accounts.
+- **PPV & sales funnel analytics:** Analyze the sales funnel of the team, specifically measuring how effectively they are selling high-value content (PPVs).
+
+### **Marketing & campaign optimization**
+
+- **Campaign optimization:** Feed marketing link stats into your own tracking tools to identify which campaigns drive the highest ROI.
+- **SEO & collaboration tracking:** Connect the API to a custom-built app that tracks earnings from specific tracking links, allowing you to calculate and sync payouts.
+- **Link performance & revenue attribution:** Use custom-built apps via the API to track subscriptions and fan spending associated with specific promotional links.
+- **Profile visibility:** Monitor a creator’s visibility, reach, and popularity trends across the platform.
+
+### **Fan management & retention**
+
+- **Fan growth & retention:** Track subscriber health, predict revenue stability, and analyze fan behavior and lifetime value over time.
+- **Fan engagement & interaction:** Analyze how active and effective creators (or their teams) are in communicating and engaging with fans to build loyalty.
+
+### **Risk management**
+
+- **Chargeback & risk mitigation:** Protect your revenue with an automated notification system for chargebacks and risk management directed towards the chatters.

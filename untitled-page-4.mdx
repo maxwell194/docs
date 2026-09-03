@@ -18,21 +18,63 @@ description: "The Infloww API is a REST-based tool designed to stream raw perfor
 - Retrieve creator reports on performance metrics like rankings, subscriber growth, chat activity
 - Obtain message analytics including automated and mass messages
 
+### Available endpoints
+
+- Creator information and reports
+- Revenue breakdown
+- Transaction performance
+- Marketing analytics
+- Employee data and reports
+- Message analytics
+- Invoice data
+- System logs and manual adjustments
+
+For more details please check [here](https://app.mintlify.com/infinni-innovations/infinni-innovations/~/b215d136-8588-4555-87ff-4094f6890986) .
+
+## Rate limiting
+
+To ensure data integrity and security, rate limits are enforced at the agency level:
+
+- **Agency Limit:** A maximum of 1,000 QPM (queries per minute) is enforced per agency, independent of the number of API keys created.
+
+## Authentication & Headers
+
+All API requests must include the following custom headers:
+
+| **Header Name** | **Description** |
+| :-- | :-- |
+| `Authorization` | API key used for authentication. Provide the raw API key as the header value (do **not** include a "Bearer" prefix). |
+| `x-oid` | The agency identifier associated with your API key (found on the API key page in Infloww labeled as "Agency OID"). |
+
+<Note>
+  **Debugging Note:** If your request fails, please include the` x-request-id` from the response headers when contacting support so the team can quickly locate and diagnose the issue.
+</Note>
+
+## Data synchronization & latency
+
+Data moves in two stages: from source platforms (such as OnlyFans) into Infloww, and then to the API. Total latency depends on platform sync schedules plus a one-hour buffer for the API to process updates from the app.
+
+- **Stage 1 (Source platform to Infloww):** Infloww syncs data on a scheduled basis. General updates populate periodically, while heavier reporting data—such as employee and creator reports—can take up to 24 hours to reflect inside the app.
+- **Stage 2 (Infloww to API):** Once data reflects in the app, the API processes updates with an additional 1-hour buffer.
+
 ## **Data Retention:**
 
-Retention periods for data vary by endpoint, typically ranging from full historical data to a maximum of one year depending on the data category. Read more details here (link)
+Retention periods for data vary by endpoint, typically ranging from full historical data to a maximum of one year depending on the data category. Read more details [here](https://app.mintlify.com/infinni-innovations/infinni-innovations/~/b215d136-8588-4555-87ff-4094f6890986) .
 
 <Columns cols={3}>
   <Column>
     <Card title="Getting started" icon="rocket-launch" href="https://app.mintlify.com/infinni-innovations/infinni-innovations/~/ec38b7aa-f519-4b5f-b2ef-edb8cc013acf">
-    </Card>
-  </Column>
-  <Column>
-    <Card title="Quick start guide" icon="hourglass-start" href="https://app.mintlify.com/infinni-innovations/infinni-innovations/~/5d380208-bf87-4461-8401-7fa0735a953e">
+      How to set up your API keys in Infloww
     </Card>
   </Column>
   <Column>
     <Card title="Help guide" icon="hands-helping" href="https://app.mintlify.com/infinni-innovations/infinni-innovations/~/b215d136-8588-4555-87ff-4094f6890986">
+      Tips for securely managing your API keys 
+    </Card>
+  </Column>
+  <Column>
+    <Card title="Quick start guide" icon="hourglass-start" href="https://app.mintlify.com/infinni-innovations/infinni-innovations/~/5d380208-bf87-4461-8401-7fa0735a953e">
+      Build your custom dashboard
     </Card>
   </Column>
 </Columns>

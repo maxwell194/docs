@@ -3,57 +3,43 @@ title: "Getting started"
 icon: "rocket-launch"
 ---
 
-## Authentication & Headers
+## **Access Requirements**
 
-All API requests must include the following custom headers:
+Only users with Owner or Admin roles can access API settings for security reasons.
 
-| **Header Name** | **Description** |
-| :-- | :-- |
-| `Authorization` | API key used for authentication. Provide the raw API key as the header value (do **not** include a "Bearer" prefix). |
-| `x-oid` | The agency identifier associated with your API key (found on the API key page in Infloww labeled as "Agency OID"). |
+## **Step 1: Generate your API key**
 
-<Note>
-  **Debugging Note:** If your request fails, please include the` x-request-id` from the response headers when contacting support so the team can quickly locate and diagnose the issue.
-</Note>
+1. Log into your **Infloww account** and go to the API management portal.
+2. Click **Create API key**.
+3. Assign a descriptive **Name** to your new key.
+4. Configure IP restrictions by adding trusted IP addresses (up to 5 recommended).
+5. Set your API key **expiration period**—options range from 1 to 180 days. A 30-day expiration is recommended for security.
+6. Choose the **API permissions**:
+   1. Select which creators and employees the API key can access.
+   2. Note that new creators are not added automatically; you must update the key’s scope manually.
+   3. Choosing "All employees" dynamically updates the scope for new staff automatically.
+7. Define **data point permissions** by selecting specific data fields the key can access, or choose "Select All".
 
-## Rate limiting
+<Tip>
+  **Pro tip:** Use restricted IP access for better security. If your IP changes, access with the key will be blocked until a new key is generated.
+</Tip>
 
-To ensure data integrity and security, rate limits are enforced at the agency level:
+## **Step 2: Secure your API key**
 
-- **Agency Limit:** A maximum of 1,000 QPM (queries per minute) is enforced per agency, independent of the number of API keys created.
+- Your full API key string is displayed **only once** during creation.
+- Copy the API key immediately or download it for safekeeping.
+- If you lose it, delete your old key and generate a new one.
 
-## Data Permissions
+## **Step 3: Manage your API keys**
+
+- Edit your API key’s name, IP whitelist, and permissions anytime.
+- Expiration cannot be changed after creation.
+- You can have a maximum of **3 active API keys** per account.
+
+## Data permissions
 
 API key permissions are configured upon creation and can be modified at any time:
 
 - **Creator access:** You must explicitly select which creators the API key can access. New or relinked creators are not automatically added to existing keys; you must manually edit the key's scope to include them.
 - **Employee access:** You must specify which employee data the API key can access. If you select **All employees**, the key's scope will dynamically update to include new staff members automatically.
 - **Unlinked / Deleted profiles:** Only the `/v1/transaction-perf/details` endpoint supports querying all creators (including deleted or unlinked). All other `creatorId`based endpoints return connected creators only.
-
-## Data synchronization & latency
-
-Data moves in two stages: from source platforms (such as OnlyFans) into Infloww, and then to the API. Total latency depends on platform sync schedules plus a one-hour buffer for the API to process updates from the app.
-
-- **Stage 1 (Source platform to Infloww):** Infloww syncs data on a scheduled basis. General updates populate periodically, while heavier reporting data—such as employee and creator reports—can take up to 24 hours to reflect inside the app.
-- **Stage 2 (Infloww to API):** Once data reflects in the app, the API processes updates with an additional 1-hour buffer.
-
-## Available endpoints & Data retention
-
-Retention windows and data availability thresholds vary by endpoint:
-
-| **Category** | **Endpoint / Scope** | **Retention Window** |
-| :-- | :-- | :-- |
-| **Creator information** | General profile data & connected creators | Full historical data |
-| **Creator status log** | Full history of creator status modifications | From June 1, 2026 onwards |
-| **Revenue breakdown** | Detailed earnings, transaction details, & refund details | Maximum of last 1 year of historical data |
-| **Transaction performance** | Sales attribution details with employee breakdowns (supports all creators, including deleted/unlinked) | Maximum of last 1 year of historical data |
-| **Reassigned sales log** | Manual assignment records for sales data | Maximum of last 1 year of historical data |
-| **Marketing analytics** | Tracking links | Full historical data |
-| **Marketing analytics** | Free trial links | Full historical data |
-| **Marketing analytics** | Profile promotions | Last 10,000 campaigns from up to 365 days ago |
-| **Marketing analytics** | Link fans | Full historical data |
-| **Employee data** | Employee lists & employee-to-creator assignments | Full historical data |
-| **Employee reports** | Sales performance & chat activity breakdowns by employee | Maximum of last 1 year of historical data |
-| **Creator reports** | Daily performance metrics (platform ranking, fan status, growth, renewals, chat activity, visitors) | Maximum of last 1 year of historical data |
-| **Message analytics** | Records of automated & priority mass messages | Full historical data |
-| **Invoice** | Monthly Infloww billing and invoice summaries | Maximum of last 1 year of historical data |

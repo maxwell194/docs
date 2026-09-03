@@ -2,3 +2,47 @@
 title: "Quick start guide"
 icon: "hourglass-start"
 ---
+
+# API & Dashboard setup
+
+## Locate and export the YAML file
+
+- Navigate to the **API Documentation** in the platform and click the **Export** button to download the **YAML file**.
+- _Why it’s important_: The YAML file provides the full endpoint structure so AI coding tools or developers can instantly map out the required dashboard sections.
+
+## **Generate and store API credentials**
+
+- Go to the **Inflow menu** and create a new **API key**.
+- Select the required endpoints and set an expiration timeframe.
+- **Crucial Step**: Store the API key and Company **Inflow OID** immediately in a safe, local environment or private cloud server. The key is shown **one time only**; if lost, a new one must be created.
+
+More details on how to set it is [here.](https://app.mintlify.com/infinni-innovations/infinni-innovations/~/ec38b7aa-f519-4b5f-b2ef-edb8cc013acf)
+
+## Build the initial dashboard structure (15–30 minutes)
+
+- Input the downloaded YAML file and a prompt into an AI development agent (e.g., Codex, Claude, Lovable).
+- **Prompt directive**: Explicitly instruct the AI to build a secure local analytics dashboard, utilizing the YAML file, and store credentials locally without exposing them publicly.
+- The AI will generate a base layout containing core sections (Overview, Creators, Campaigns, Messaging, Employees, Financials, Settings).
+
+## **Connect credentials & Fetch data**
+
+- Open the dashboard's **Settings** panel.
+- Enter the saved API Key and Company OID into the protected fields to begin fetching live data.
+
+## **Customize features & Add integrations**
+
+- Configure custom KPI alerts, financial logic (e.g., creator payouts, employee commission splits), automated reporting, or integrate external LLMs for conversational data analysis.
+
+# Key points to pay attention to
+
+- **Credential security (top priority)**: API keys and Company OIDs must never be hardcoded into public repositories or exposed to scraping risks. Credentials should always be managed securely in local/private settings.
+- **Rate limits & Caching**: The API limit is **1,000 queries per minute**. It is strongly recommended to set up local caching so the dashboard doesn't re-fetch the entire dataset on every load.
+- **API capabilities vs. Limitations**:
+  - **Supported**: Fetching data for analysis, tracking link extraction, creator profiles, employee assignments, sales, transactions, and fan details.
+  - **Not Supported**: External action triggers (e.g., launching campaigns, creating external messages, scheduling shifts) and directly scraping live chat interfaces.
+
+# Quick troubleshooting checklist
+
+- **Dashboard won't open**: Verify whether the local or server process is active; ask the AI agent to restart the server if needed.
+- **Failed connection / Missing data**: Double-check credentials, capture a screenshot for the AI agent to debug, or try adjusting the selected date range.
+- **Missing creators / Records**: Review the enabled permissions on the generated API key to confirm all required endpoints were checked.
