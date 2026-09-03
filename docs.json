@@ -3,13 +3,13 @@
   "theme": "mint",
   "name": "Infloww API",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#FE7D50",
+    "light": "#F88056",
+    "dark": "#DE6D46"
   },
   "favicon": {
-    "light": "/favicon.svg",
-    "dark": "/favicon.svg"
+    "light": "/images/Infloww_LogoMark_W.svg",
+    "dark": "/images/Infloww_LogoMark_B.svg"
   },
   "navigation": {
     "pages": [
@@ -29,8 +29,9 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/Infloww_Logotype_W.svg",
+    "dark": "/images/Infloww_Logotype_B.svg",
+    "href": "https://infloww.com/"
   },
   "navbar": {
     "links": [
