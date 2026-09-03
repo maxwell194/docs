@@ -8,8 +8,8 @@
     "dark": "#DE6D46"
   },
   "favicon": {
-    "light": "/images/Infloww_LogoMark_W.svg",
-    "dark": "/images/Infloww_LogoMark_B.svg"
+    "light": "/images/Infloww_LogoMark_B.svg",
+    "dark": "/images/Infloww_LogoMark_W.svg"
   },
   "navigation": {
     "pages": [
@@ -29,8 +29,8 @@
     ]
   },
   "logo": {
-    "light": "/images/Infloww_Logotype_W.svg",
-    "dark": "/images/Infloww_Logotype_B.svg",
+    "light": "/images/Infloww_Logotype_B.svg",
+    "dark": "/images/Infloww_Logotype_W.svg",
     "href": "https://infloww.com/"
   },
   "navbar": {
