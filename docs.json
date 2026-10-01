@@ -12,20 +12,19 @@
     "dark": "/images/Infloww_LogoMark_W.svg"
   },
   "navigation": {
-    "pages": [
-      "homepage",
+    "products": [
       {
-        "group": "Infloww API",
+        "product": "Infloww API",
         "pages": [
           "api",
           "untitled-page-5",
           "untitled-page-3",
-          "untitled-page-2"
+          "untitled-page-2",
+          {
+            "group": "API Reference",
+            "openapi": "openapi.json"
+          }
         ]
-      },
-      {
-        "group": "API Reference",
-        "openapi": "openapi.json"
       }
     ]
   },
