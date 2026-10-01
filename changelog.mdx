@@ -1,3 +1,107 @@
 ---
 title: "Changelog"
+sidebarTitle: "Changelog"
+rss: true
 ---
+
+The Infloww API changelog lists every release, including new endpoints, improvements, bug fixes, and breaking changes. Filter entries by tag, or subscribe to the RSS feed with the button above to get notified about new releases.
+
+---
+
+<Update label="September 2026" tags={["Breaking change","Improvement","Security"]}>
+  ## Query limits, key prefix, and higher key allowance
+
+  This update tightens query ranges for several endpoints, makes time ranges mandatory, and raises the number of API keys each agency can create.
+
+  <Warning>
+    **Breaking changes.** `startTime` and `endTime` are now required on all endpoints, and the maximum `limit` for message endpoints is reduced from 100 to 10. Update your integration before these changes reach your account.
+  </Warning>
+
+  **Query ranges**
+
+  - [`/v1/transactions`](/api/reference/transactions) and `/v1/refunds`: a single query can cover up to one month, and data from the past year can be retrieved.
+  - [`/v1/automated-messages`](/api/reference/messages) and `/v1/priority-mass-messages`: a single query can cover up to one month, with full historical data available. The maximum `limit` is now 10 (previously 100).
+  - [`/v1/links`](/api/reference/marketing): a single query can cover up to one month, with full historical data available.
+  - `startTime` and `endTime` are now required on all endpoints. Null values are rejected, so results never depend on unstated defaults.
+
+  **API keys and security**
+
+  - Newly generated API keys use the prefix `st_ifw_` instead of `sk-`. Existing keys continue to work.
+  - A new agency can create its first API key 2 hours after the agency is created, once at least one creator is connected.
+  - The API key limit has increased from 3 to 20 per agency. All keys in an agency share the same QPM quota, so heavy use across several keys can exhaust your [rate limit](/api/rate-limits). See [Managing API keys](/api/api-keys) for security best practices.
+
+  **Rate limits**
+
+  - Rate limiting now supports agency hierarchies and differentiated QPS and QPM thresholds. See [Rate limits](/api/rate-limits) for details.
+</Update>
+
+<Update label="August 2026" tags={["New feature","Improvement"]} description="v1.4">
+  ## Invoices, audit logs, and organization permissions
+
+  Version 1.4 adds billing data and two new log endpoints for auditing creator and sales record changes, along with a new organization-level permission.
+
+  - **Invoices**: query monthly billing and invoice summaries by agency and billing period. See [Invoices](/api/reference/invoices). Permission scope: organization.
+  - **Reassigned sales logs**: query records of manual sales record reassignments. See [System logs](/api/reference/system-logs). Permission scope: organization.
+  - **Creator Infloww status logs**: query every change to a creator's status, for full traceability. Useful for calculating a creator's revenue only during the periods they were connected. See [System logs](/api/reference/system-logs). Permission scope: creator.
+  - **Organization permission**: a new permission for data points that return agency-wide aggregates and can't be queried by creator or employee.
+  - [`/v1/links`](/api/reference/marketing) now accepts `status` as a query parameter.
+  - `/v1/employee-report/employee-chat-summary` now returns response time based on both scheduled hours and clocked hours. See [Employees](/api/reference/employees).
+</Update>
+
+<Update label="July 2026" tags={["New feature","Improvement"]} description="v1.3">
+  ## All-creator data and new report data points
+
+  Version 1.3 introduces creator and employee report data, plus a new endpoint covering creators in every connection status.
+
+  **Creator scope**
+
+  - Added an **All creators** option to the creator scope. Due to compliance requirements, newly connected creators are still selected manually.
+
+  **Creator permissions**
+
+  - New endpoint [`/v1/all-creators`](/api/reference/creators) returns creators in all statuses, including non-connected creators. Accessible by default.
+  - [`/v1/creators`](/api/reference/creators) and [`/v1/transactions`](/api/reference/transactions) now return the encrypted platform creator ID (`perform id`).
+  - 8 new daily data points, including **Sales records** and **Creator reports**.
+
+  <Note>
+    Only Sales records can be queried for non-connected creators. All other data points support connected creators only.
+  </Note>
+
+  **Employee permissions**
+
+  - 2 new data points from **Employee reports**, available by creator (all statuses), employee, and day. Shift and clocked-hours metrics are not included.
+  - All new data points in this release return the encrypted platform creator ID (`perform id`).
+</Update>
+
+<Update label="June 2026" tags={["New feature","Improvement"]} description="v1.2">
+  ## Message analytics and employee data
+
+  Version 1.2 adds message analytics for creators and new employee endpoints.
+
+  **Creator permissions**
+
+  - New [**Automated messages**](/api/reference/messages) and [**Priority mass messages**](/api/reference/messages) endpoints. Data matches the AM and PMM sections in the Infloww app and updates daily. Non-text materials and co-creators are not included.
+
+  **Employee permissions**
+
+  - New **Employee** scope, with two new endpoints: [**Employees**](/api/reference/employees) and [**Assigned creators**](/api/reference/employees). Both are selected by default.
+
+  **API key setup**
+
+  - Endpoints that are selected by default are now listed separately when you create an API key.
+</Update>
+
+<Update label="May 2026" tags={["New feature","Improvement"]} description="v1.1">
+  ## API key expiration and scopes
+
+  Version 1.1 adds expiration dates and configurable scopes to API keys.
+
+  - **Key expiration**: every API key now expires after 90 days. The expiration is set when the key is created and can't be changed afterwards. Keys created before this release expire 90 days after the release date.
+  - **Key scopes**: choose which creators and permissions each key can access. Scopes can be edited at any time. See [Managing API keys](/api/api-keys).
+  - The API key list now shows who created each key and when it expires.
+  - Added call logs for API requests.
+
+  <Note>
+    Deleted creators don't appear in the creator list. Newly connected creators aren't added to existing keys automatically, so select them manually to access their data.
+  </Note>
+</Update>

@@ -3,17 +3,6 @@ title: "Help guide"
 icon: "hands-helping"
 ---
 
-## **Security best practices**
-
-## Error message guide
-
-| **Status Code** | **Common Cause** | **Resolution** |
-| :-- | :-- | :-- |
-| `401 Unauthorized` | Invalid or missing API key. | Verify that your raw API key is provided in the `Authorization` header without any "Bearer" prefix. |
-| `403 Forbidden` | Missing `x-oid` header or insufficient key permissions. | Ensure the `x-oid` header contains your correct Agency OID. Verify that the requested creator or employee is explicitly included in your API key's permission scope. |
-| `429 Too Many Requests` | Agency rate limit exceeded. | You have exceeded the 1,000 QPM agency threshold across your API keys. Pause or space out requests before retrying. |
-| `500 / 503 Internal Error` | Temporary API or database error. | Retry the request after a short interval. If the issue persists, contact support and provide the `x-request-id` from the response headers. |
-
 ## Common use cases
 
 ### **Financial operations & reporting**
