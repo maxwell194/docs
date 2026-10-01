@@ -12,18 +12,47 @@
     "dark": "/images/Infloww_LogoMark_W.svg"
   },
   "navigation": {
-    "products": [
+    "groups": [
       {
-        "product": "Infloww API",
+        "group": "Get started",
         "pages": [
           "api",
-          "untitled-page-5",
-          "untitled-page-3",
-          "untitled-page-2",
-          {
-            "group": "API Reference",
-            "openapi": "openapi.json"
-          }
+          "quickstart",
+          "keys",
+          "domains-and-ip-addresses"
+        ]
+      },
+      {
+        "group": "API Reference",
+        "openapi": "openapi.json"
+      },
+      {
+        "group": "Esssentials",
+        "pages": [
+          "rate-limits",
+          "errors",
+          "pagination",
+          "dates-and-timezones",
+          "data-retention",
+          "untitled-page-2"
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "untitled-page-3"
+        ]
+      },
+      {
+        "group": "API reference",
+        "pages": []
+      },
+      {
+        "group": "Resources",
+        "pages": [
+          "changelog",
+          "faq",
+          "support"
         ]
       }
     ]
